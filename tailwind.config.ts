@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	darkMode: ["class"],
+	darkMode: 'class',
 	content: [
 	  "./pages/**/*.{ts,tsx}",
 	  "./components/**/*.{ts,tsx}",
@@ -69,7 +69,7 @@ module.exports = {
 		  IBMPlex: ["var(--font-ibm-plex)"],
 		},
 		backgroundImage: {
-		  "purple-gradient": "url('/assets/images/gradient-bg.svg')",
+		  "purple-gradient": "url('/assets/images/3662796.jpg')",
 		  banner: "url('/assets/images/banner-bg.png')",
 		},
 		borderRadius: {

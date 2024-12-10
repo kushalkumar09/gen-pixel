@@ -11,7 +11,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <aside className="sidebar">
+    <aside className="sidebar dark:bg-slate-700">
       <div className="flex size-full flex-col gap-1 ">
         <Link href="/" className="sidebar-logo">
           <Image src="/assets/images/logo-icon.png" alt="logo" width={180} height={28}/>
@@ -24,7 +24,7 @@ const Sidebar = () => {
                 const isActive = link.route === pathname
 
                 return (
-                  <li key={link.route} className={`sidebar-nav_element group ${
+                  <li key={link.route} className={` dark:text-white dark:hover:text-slate-600 sidebar-nav_element group ${
                     isActive ? 'bg-green-500 text-white' : 'text-gray-700'
                   }`}>
                     <Link className="sidebar-link" href={link.route}>
@@ -51,7 +51,7 @@ const Sidebar = () => {
                   <li key={link.route} className={`sidebar-nav_element group ${
                     isActive ? 'bg-purple-gradient text-white' : 'text-gray-700'
                   }`}>
-                    <Link className="sidebar-link" href={link.route}>
+                    <Link className="sidebar-link dark:text-white dark:hover:text-gray-600" href={link.route}>
                       <Image 
                         src={link.icon}
                         alt="logo"
@@ -65,14 +65,14 @@ const Sidebar = () => {
                 )
               })}
 
-              <li className="flex-center cursor-pointer gap-2 p-4">
+              <li className="flex-center cursor-pointer gap-2 p-4 dark:bg-slate-400">
                 <UserButton showName />
               </li>
             </ul>
           </SignedIn>
 
           <SignedOut>
-            <Button asChild className="button bg-purple-gradient bg-cover">
+            <Button asChild className="button bg-purple-gradient bg-cover dark:text-white">
               <Link href="/sign-in">Login</Link>
             </Button>
           </SignedOut>

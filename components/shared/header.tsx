@@ -8,8 +8,8 @@ type headerProps = {
 const Header = ({ title, subtitle }: headerProps) => {
   return (
     <>
-      <h2 className=" h2-bold text-dark-700">{title}</h2>
-      {subtitle && <p className="p-16-regular mt-4">{subtitle}</p>}
+      <h2 className=" h2-bold text-dark-700  dark:text-white">{title}</h2>
+      {subtitle && <p className="p-16-regular mt-4  dark:text-white">{subtitle}</p>}
     </>
   );
 };

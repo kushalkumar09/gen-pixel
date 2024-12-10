@@ -235,12 +235,14 @@
 
   /* Home Page */
   .home {
-    @apply sm:flex-center hidden h-72 flex-col gap-4 rounded-[20px] border bg-banner bg-cover bg-no-repeat p-10 shadow-inner;
+    @apply sm:flex-center hidden h-72 flex-col gap-2 rounded-[20px] dark:bg-purple-gradient border bg-gradient-to-r from-green-500 via-green-600 to-green-700 p-10 shadow-inner;
   }
+  
 
   .home-heading {
-    @apply h1-semibold max-w-[500px] flex-wrap text-center text-white shadow-sm;
+    @apply font-bold text-4xl text-center mx-auto max-w-[700px] leading-tight text-white;
   }
+  
 
   /* Credits Page */
   .credits-list {

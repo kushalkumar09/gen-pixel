@@ -32,7 +32,7 @@ export const CustomField = ({
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem className={className}>
+        <FormItem className={className+" dark:text-white"}>
           {formLabel && <FormLabel>{formLabel}</FormLabel>}
           <FormControl>{render({ field })}</FormControl>
           <FormMessage />
