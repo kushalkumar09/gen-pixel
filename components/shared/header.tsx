@@ -1,9 +1,9 @@
 import React from "react";
-import Transformationform from "./transformationform";
+// import Transformationform from "./transformationform";
 
 type headerProps = {
-  title: String;
-  subtitle?: String;
+  title: string;
+  subtitle?: string;
 };
 const Header = ({ title, subtitle }: headerProps) => {
   return (

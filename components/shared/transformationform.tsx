@@ -1,5 +1,5 @@
 "use client";
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -15,12 +15,12 @@ import {
 import { Button } from "@/components/ui/button";
 import {
   Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+  // FormControl,
+  // FormDescription,
+  // FormField,
+  // FormItem,
+  // FormLabel,
+  // FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import {
@@ -332,7 +332,7 @@ const TransformationForm = ({
             disabled={isTransforming || newTransformation === null}
             onClick={onTransformHandler}
           >
-            {isTransforming ? "Transforming..." : "Apply Transformation"}
+            {(isTransforming || isPending)  ? "Transforming..." : "Apply Transformation"}
           </Button>
           <Button
             type="submit"

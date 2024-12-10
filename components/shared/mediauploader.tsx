@@ -1,5 +1,5 @@
 "use client";
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 import { useToast } from "@/hooks/use-toast"
 import { dataUrl, getImageSize } from "@/lib/utils";
 import {CldUploadWidget,CldImage} from "next-cloudinary";
