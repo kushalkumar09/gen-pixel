@@ -1,27 +1,21 @@
-
-import { Collection } from "@/components/shared/collection";
-import { navLinks } from "@/constants";
-import { getAllImages } from "@/lib/actions/image.actions";
-import Image from "next/image";
-import Link from "next/link";
+import { Collection } from "@/components/shared/collection"
+import { navLinks } from "@/constants"
+import { getAllImages } from "@/lib/actions/image.actions"
+import Image from "next/image"
+import Link from "next/link"
 
 const Home = async ({ searchParams }: SearchParamProps) => {
   const search = await searchParams;
   const page = Number(search?.page) || 1;
-  const searchQuery = (search?.query as string) || "";
+  const searchQuery = (search?.query as string) || '';
 
-  const images = await getAllImages({ page, searchQuery });
-  
+  const images = await getAllImages({ page, searchQuery})
 
   return (
     <>
-      
       <section className="home">
         <h1 className="home-heading">
-          <span className=" text-green-300  dark:text-white">
-            "Effortless Image Editing with Genpixel"{" "}
-          </span>{" "}
-          <br /> Remove Backgrounds, Change Colors, Erase Objects
+          Unleash Your Creative Vision with Imaginify
         </h1>
         <ul className="flex-center w-full gap-20">
           {navLinks.slice(1, 5).map((link) => (
@@ -39,8 +33,8 @@ const Home = async ({ searchParams }: SearchParamProps) => {
         </ul>
       </section>
 
-      <section className="sm:mt-12  dark:text-white">
-        <Collection
+      <section className="sm:mt-12">
+        <Collection 
           hasSearch={true}
           images={images?.data}
           totalPages={images?.totalPage}
@@ -48,7 +42,7 @@ const Home = async ({ searchParams }: SearchParamProps) => {
         />
       </section>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
