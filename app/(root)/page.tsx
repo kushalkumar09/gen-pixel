@@ -4,20 +4,18 @@ import { getAllImages } from "@/lib/actions/image.actions";
 import Image from "next/image";
 import Link from "next/link";
 
-// Define the correct type for SearchParamProps
+// Define a specific type for SearchParamProps
 declare type SearchParamProps = {
   searchParams: { 
     page?: string; 
     query?: string; 
-    // [key: string] : string | string[] | undefined; 
   };
 };
 
 const Home = async ({ searchParams }: SearchParamProps) => {
-  const resolvedSearchParams = await searchParams;
-
-  const page = Number(resolvedSearchParams?.page) || 1;
-  const searchQuery = (resolvedSearchParams?.query as string) || "";
+  // Access query parameters directly
+  const page = Number(searchParams?.page) || 1;
+  const searchQuery = searchParams?.query || "";
 
   // Fetch images using the provided parameters
   const images = await getAllImages({ page, searchQuery });
