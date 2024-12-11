@@ -1,24 +1,14 @@
-import { Collection } from "@/components/shared/collection";
-import { navLinks } from "@/constants";
-import { getAllImages } from "@/lib/actions/image.actions";
-import Image from "next/image";
-import Link from "next/link";
-
-// Define a specific type for SearchParamProps
-declare type SearchParamProps = {
-  searchParams: { 
-    page?: string; 
-    query?: string; 
-  };
-};
+import { Collection } from "@/components/shared/collection"
+import { navLinks } from "@/constants"
+import { getAllImages } from "@/lib/actions/image.actions"
+import Image from "next/image"
+import Link from "next/link"
 
 const Home = async ({ searchParams }: SearchParamProps) => {
-  // Access query parameters directly
   const page = Number(searchParams?.page) || 1;
-  const searchQuery = searchParams?.query || "";
+  const searchQuery = (searchParams?.query as string) || '';
 
-  // Fetch images using the provided parameters
-  const images = await getAllImages({ page, searchQuery });
+  const images = await getAllImages({ page, searchQuery})
 
   return (
     <>
@@ -43,7 +33,7 @@ const Home = async ({ searchParams }: SearchParamProps) => {
       </section>
 
       <section className="sm:mt-12">
-        <Collection
+        <Collection 
           hasSearch={true}
           images={images?.data}
           totalPages={images?.totalPage}
@@ -51,7 +41,7 @@ const Home = async ({ searchParams }: SearchParamProps) => {
         />
       </section>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
