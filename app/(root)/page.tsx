@@ -9,7 +9,7 @@ declare type SearchParamProps = {
   searchParams: { 
     page?: string; 
     query?: string; 
-    [key: string]: string | string[] | undefined; 
+    // [key: string] : string | string[] | undefined; 
   };
 };
 
