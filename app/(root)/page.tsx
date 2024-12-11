@@ -6,7 +6,11 @@ import Link from "next/link";
 
 // Define the correct type for SearchParamProps
 declare type SearchParamProps = {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: { 
+    page?: string; 
+    query?: string; 
+    [key: string]: string | string[] | undefined; 
+  };
 };
 
 const Home = async ({ searchParams }: SearchParamProps) => {
