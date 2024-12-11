@@ -114,11 +114,8 @@ declare type RemoveUrlQueryParams = {
 };
 
 declare type SearchParamProps = {
-  params: { id: string; type: TransformationTypeKey };
-  searchParams: {
-    page?: string; // Assuming page is a string from the URL
-    query?: string; // Assuming query is a string from the URL
-  };
+  params?: { [key: string]: string }; // Dynamic route params
+  searchParams?: { [key: string]: string | string[] | undefined }; // Query parameters
 };
 
 declare type TransformationFormProps = {
