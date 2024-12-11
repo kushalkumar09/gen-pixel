@@ -1,16 +1,26 @@
-import { Collection } from "@/components/shared/collection"
-import { navLinks } from "@/constants"
-import { getAllImages } from "@/lib/actions/image.actions"
-import Image from "next/image"
-import Link from "next/link"
+import { Collection } from "@/components/shared/collection";
+import { navLinks } from "@/constants";
+import { getAllImages } from "@/lib/actions/image.actions";
+import Image from "next/image";
+import Link from "next/link";
+
+// Define the type for searchParams
+interface SearchParamProps {
+  searchParams: {
+    page?: string; // Optional page parameter
+    query?: string; // Optional query parameter
+  };
+}
 
 const Home = async ({ searchParams }: SearchParamProps) => {
+  // Await searchParams to access its properties
   const params = await searchParams;
 
-  const page = Number(params.page) || 1; 
-  const searchQuery = params.query || ''; 
+  const page = Number(params.page) || 1; // Convert to number, default to 1
+  const searchQuery = params.query || ''; // Default to empty string if not provided
 
-  const images = await getAllImages({ page, searchQuery})
+  // Fetch images based on the page and search query
+  const images = await getAllImages({ page, searchQuery });
 
   return (
     <>
@@ -43,7 +53,7 @@ const Home = async ({ searchParams }: SearchParamProps) => {
         />
       </section>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;
