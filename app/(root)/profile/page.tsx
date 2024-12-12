@@ -8,11 +8,10 @@ import { getUserImages } from "@/lib/actions/image.actions";
 import { getUserById } from "@/lib/actions/user.actions";
 import { auth } from "@clerk/nextjs/server";
 
-const Profile = async ({searchParams}:SearchParamProps) => {
+const Profile = async ({searchParams}:{searchParams:Promise<any>}) => {
   const search = await searchParams;
   const page =  Number( search?.page) || 1;
   const { userId } = await auth();
-
   if (!userId) redirect("/sign-in");
 
   const user = await getUserById(userId);
