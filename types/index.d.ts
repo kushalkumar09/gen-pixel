@@ -114,8 +114,8 @@ declare type RemoveUrlQueryParams = {
 };
 
 declare type SearchParamProps = {
-  params?: { [key: string]: string }; // Dynamic route params
-  searchParams?: { [key: string]: string | string[] | undefined }; // Query parameters
+  params: Promise<{ id: string; type: TransformationTypeKey }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 declare type TransformationFormProps = {
