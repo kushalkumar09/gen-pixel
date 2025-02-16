@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
-import { checkoutCredits } from "@/lib/actions/transactions";
+import { checkoutCredits, createTransaction } from "@/lib/actions/transactions";
 
 import { Button } from "../ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { updateCredits } from "@/lib/actions/user.actions";
 // import { auth } from "@clerk/nextjs/server";
 // import { redirect } from "next/navigation";
 // import { getUserById } from "@/lib/actions/user.actions";
@@ -53,8 +54,7 @@ const Checkout = ({
     try {
       // Call your backend to create a Razorpay order
       const order = await checkoutCredits({ plan, amount, credits, buyerId });
-      console.log("checkout")
-
+      console.log(order);
       if (!order.orderId) {
         throw new Error("Failed to create Razorpay order");
       }
@@ -65,17 +65,34 @@ const Checkout = ({
         currency: "INR",
         name: "GenPixel",
         description: `Purchase ${plan}`,
-        order_id: order.orderId, // Order ID from backend
+        order_id: order.orderId,
         handler: async function (response: any) {
-          // Process successful payment
-          toast({
-            title: "Payment Successful!",
-            description: "Your credits have been purchased.",
-            duration: 5000,
-            className: "success-toast",
-          });
-
-          // Optionally, verify payment on your backend
+          console.log("payment response", response);
+          try {
+            const transaction: CreateTransactionParams = {
+              razorpayId: response.razorpay_payment_id,
+              amount: amount,
+              credits: credits,
+              plan: plan,
+              buyerId: buyerId,
+              createdAt: new Date(),
+            };
+            await createTransaction(transaction);
+            console.table(transaction);
+            toast({
+              title: "Payment Successful!",
+              description: "Your credits have been purchased.",
+              duration: 5000,
+              className: "success-toast",
+            });
+          } catch (error) {
+            toast({
+              title: "Transaction Failed",
+              description: "Failed to record the transaction.",
+              duration: 5000,
+              className: "error-toast",
+            });
+          }
         },
         prefill: {
           name: name,
@@ -86,8 +103,6 @@ const Checkout = ({
           color: "#3399cc",
         },
       };
-      console.log("checkout")
-      console.table(options);
 
       const razorpay = new (window as any).Razorpay(options);
       razorpay.open();
@@ -103,13 +118,31 @@ const Checkout = ({
 
   return (
     <section>
-      <Button
-        onClick={onCheckout}
-        role="link"
-        className="w-full rounded-full dark:text-white bg-purple-gradient bg-cover"
-      >
-        Buy Credit
-      </Button>
+      {plan === "Free" ? (
+        <Button
+          variant="outline"
+          className="credits-btn"
+          onClick={() => {
+            updateCredits(buyerId, credits);
+            toast({
+              title: "Free Consumemable added successfully!",
+              description: "Your credits have been purchased.",
+              duration: 5000,
+              className: "success-toast",
+            });
+          }}
+        >
+          Free Consumable
+        </Button>
+      ) : (
+        <Button
+          onClick={onCheckout}
+          role="link"
+          className="w-full rounded-full dark:text-white bg-purple-gradient bg-cover"
+        >
+          Buy Credit
+        </Button>
+      )}
     </section>
   );
 };

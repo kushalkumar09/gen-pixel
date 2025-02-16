@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 import crypto from "crypto";
 
 export async function POST(request: Request) {
-  console.log("connecting to webhook");
   const body = await request.text();
 
   const razorpaySignature = request.headers.get("x-razorpay-signature") as string;
@@ -24,7 +23,6 @@ export async function POST(request: Request) {
 
   // Get the event type
   const eventType = event.event;
-  console.log("event : "+ eventType)
 
   // Handle "payment.captured" event
   if (eventType === "payment.captured") {
