@@ -96,10 +96,3 @@ Each transformation reduces a user's credit balance. The app checks if the user 
 
 - **User uploads** → Transformation config is created → Cloudinary applies it → **Credits updated** → Transformed image saved
 
-## 📜 License
-
-This project is licensed under the MIT License.
-
----
-
-Let me know if you want to add deployment instructions (e.g., for Vercel or Render) or a project logo at the top!
