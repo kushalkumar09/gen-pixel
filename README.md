@@ -1,4 +1,3 @@
-Absolutely! Here's your updated `README.md` file with **GenPixel** as the project name:
 
 ---
 
