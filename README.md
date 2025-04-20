@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Absolutely! Here's your updated `README.md` file with **GenPixel** as the project name:
 
-## Getting Started
+---
 
-First, run the development server:
+# 🖼️ GenPixel - AI-Powered Image Transformation App
+
+**GenPixel** is a modern web application that allows users to upload images and apply a variety of AI-powered transformations like background removal, recoloring, object removal, and more. It uses **Next.js 13**, **Cloudinary**, **MongoDB**, and **Tailwind CSS** to deliver a seamless, full-stack image editing experience.
+
+## ✨ Features
+
+- 🔄 Apply powerful image transformations:
+  - Restore
+  - Recolor
+  - Remove Background
+  - Remove Objects
+  - Fill with Custom Aspect Ratios
+- ☁️ Upload and manage images via Cloudinary
+- 👤 User authentication and credit-based system
+- 💾 Save and update transformed images to a database
+- 📐 Responsive and interactive design with live image previews
+
+## 🔧 Tech Stack
+
+- **Next.js 13 (App Router)**
+- **Tailwind CSS**
+- **MongoDB + Mongoose**
+- **Cloudinary**
+- **React Hook Form + Zod**
+- **ShadCN UI Components**
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Ensure the following are installed:
+
+- Node.js (v18+)
+- MongoDB (local or Atlas)
+- A Cloudinary account
+
+### Environment Setup
+
+Create a `.env.local` file and add the following:
+
+```env
+MONGODB_URI=your_mongodb_connection_string
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
+
+### Installation
+
+```bash
+git clone https://github.com/yourusername/genpixel.git
+cd genpixel
+npm install
+```
+
+### Run Locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and go to `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧠 How It Works
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Upload** an image using the MediaUploader.
+2. Choose a **transformation type** (e.g., recolor, remove background).
+3. Input additional info (e.g., prompt or target color).
+4. Click **Apply Transformation** – a transformation config is generated and applied via a Cloudinary URL.
+5. Save the final transformed image – it's stored with metadata in MongoDB.
 
-## Learn More
+## 📁 Folder Structure
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+components/
+  └── shared/
+  └── transformation/
+lib/
+  └── actions/
+  └── utils.ts
+pages/
+  └── transformations/
+public/
+styles/
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💳 Credit System
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Each transformation reduces a user's credit balance. The app checks if the user has enough credits before allowing transformations.
 
-## Deploy on Vercel
+## 🧩 Transformation Flow
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **User uploads** → Transformation config is created → Cloudinary applies it → **Credits updated** → Transformed image saved
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+Let me know if you want to add deployment instructions (e.g., for Vercel or Render) or a project logo at the top!
